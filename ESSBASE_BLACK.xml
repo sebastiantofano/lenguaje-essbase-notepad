@@ -1,0 +1,2184 @@
+<?xml version="1.0" encoding="Windows-1252" ?>
+<NotepadPlus>
+	<AutoComplete language="ESSBASE_BLACK" descr="Autor: sebastian.tofano@oracle.com">
+		<Environment ignoreCase="yes" startFunc="(" stopFunc=")" paramSeparator="," terminal=";" additionalWordChar="" />
+		<KeyWord name="ENDFIX" />
+		<KeyWord name="ENDLOOP" />
+		<KeyWord name="ENDIF" />
+		<KeyWord name="ENDEXCLUDE" />
+
+		<KeyWord name="LOOP" func="yes">
+			<Overload retVal="" 
+			descr="
+Returns all members at the specified generation or level relative to the specified member in the database outline.
+				
+Parameters
+				
+mbrName
+    Any valid single member name, or a function that returns a single member.
+genLevNum
+    An integer value that defines the number of a generation or level. A positive integer defines a generation number. A value of 0 or a negative integer defines a level number.
+genLevName
+    Generation or level name specification.
+			">
+				<Param name="integer" />
+				<Param name="[break]" />
+			</Overload>
+		</KeyWord>
+
+
+		<KeyWord name="EXCLUDE" func="yes">
+			<Overload retVal="" 
+			descr="
+The EXCLUDE command allows you to define a fixed range of members which are not affected by the associated commands. The ENDEXCLUDE command ends an EXCLUDE command block.
+
+As shown in the example, you call ENDEXCLUDE after all of the commands in the EXCLUDE command block have been called, and before the next element of the calculation script.
+
+Specifying members that should not be calculated in an EXCLUDE..ENDEXCLUDE command may be simpler than specifying a complex combination of member names in a FIX…ENDFIX command.
+
+Syntax
+
+EXCLUDE (Mbrs)
+COMMANDS ;
+ENDEXCLUDE
+			">
+				<Param name="Mbrs" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+		<KeyWord name="RELATIVE" func="yes">
+			<Overload retVal="" 
+			descr="
+Returns all members at the specified generation or level relative to the specified member in the database outline.
+				
+Parameters
+				
+mbrName
+    Any valid single member name, or a function that returns a single member.
+genLevNum
+    An integer value that defines the number of a generation or level. A positive integer defines a generation number. A value of 0 or a negative integer defines a level number.
+genLevName
+    Generation or level name specification.
+			">
+				<Param name="mbrName" />
+				<Param name="genLevNum | genLevName" />
+			</Overload>
+		</KeyWord>
+
+		<KeyWord name="ISMBR" func="yes">
+			<Overload retVal="" 
+			descr="
+Returns TRUE if the current member matches any one of the specified members.
+				
+Parameters
+				
+mbrName
+    Any valid single member name or member combination, or a function that returns a single member or member combination.
+rangeList
+    A valid member name, a comma-delimited list of member names, member set functions, and range functions.
+mbrList
+    A comma-delimited list of members.
+			">
+				<Param name="mbrName | rangeList | mbrList" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+		<KeyWord name="ISUDA" func="yes">
+			<Overload retVal="" 
+			descr="
+Returns TRUE if the specified user-defined attribute (UDA) exists for the current member of the specified dimension at the time of the calculation.
+				
+Parameters
+				
+dimName
+    Dimension name specification that contains the member you are checking.
+UDAStr
+    User-defined attribute (UDA) name string.
+			">
+				<Param name="dimName" />
+				<Param name="UDAStr" />
+			</Overload>
+		</KeyWord>
+
+		<KeyWord name="PRIOR" func="yes">
+			<Overload retVal="" 
+			descr="
+Returns the nth previous cell member from mbrName, in the sequence XrangeList. All other dimensions assume the same members as the current member. @PRIOR works only within the designated range, and with level 0 members. 
+				
+Parameters
+				
+mbrName
+    Any valid single member name, or a function that returns a single member.
+n
+    Optional signed integer. Using a negative value for n has the same effect as using the matching positive value in @NEXT. If you do not specify n, then a default value of 1 is assumed, which returns the next prior member from the lowest level of the dimension tagged as Time in the database outline.
+XrangeList
+    Optional parameter specifying a sequential range of members. If a range is not specified, Essbase uses the level 0 members from the dimension tagged as Time.
+				
+    Can be a valid member name, a comma-delimited list of member names, cross dimensional members, or a return value from a member set function or range function (including @XRANGE).
+				
+    For more information about rangeList and XrangeList, see Range List Parameters.
+			">
+				<Param name="mbrName [" />
+				<Param name="n" />
+				<Param name="XrangeList]" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+		<KeyWord name="MEMBER" func="yes">
+			<Overload retVal="" 
+			descr="
+Returns the member with the name that is provided as a character string.
+				
+Parameters
+				
+String
+    A string (enclosed in double quotation marks) or a function that returns a string
+			">
+				<Param name="String" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+		<KeyWord name="XREF" func="yes">
+			<Overload retVal="" 
+			descr="
+				
+Enables a database calculation to incorporate values from another Essbase database.
+				
+The following terminology is used to describe @XREF:
+				
+    Data target: the database on which the current calculation is running (that is, the database on which the @XREF call originates).
+				
+    Data source: the database that is queried by @XREF. This database may be remote (that is, on a different machine than the data target).
+				
+    Point of view: the member combination currently being calculated on the data target (that is, the member combination that identifies the left hand side of a calculation).
+				
+The @XREF function retrieves values from a data source to be used in a calculation on a data target. @XREF does not impose member and dimension mapping restrictions, which means that the data source and data target outlines can be different.
+			">
+				<Param name="locationAlias [" />
+				<Param name="mbrList]" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+		<KeyWord name="CONCATENATE" func="yes">
+			<Overload retVal="" 
+			descr="
+Returns one character string that is the result of appending one character string (String2) to the end of another character string (String1). 
+				
+Parameters
+				
+String1
+    A string or a function that returns a string
+String2
+    A string or a function that returns a string
+			">
+				<Param name="String1" />
+				<Param name="String2" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+		<KeyWord name="UDA" func="yes">
+			<Overload retVal="" 
+			descr="
+Returns members based on a common attribute, which you have defined as a user-defined attribute (UDA) on the Essbase Server. 
+				
+				
+Parameters
+				
+dimName
+    Name of the dimension with which the uda is associated.
+uda
+    Name of the user-defined attribute as it appears in the database outline.
+				
+Notes
+You must type the UDA string exactly as it appears in the database outline.
+			">
+				<Param name="dimName" />
+				<Param name="uda" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+		<KeyWord name="ABS" func="yes">
+			<Overload retVal="" 
+			descr="
+Returns the absolute value of expression. The absolute value of a number is that number less its sign. A negative number becomes positive, while a positive number remains positive. 
+				
+Parameters
+				
+expression
+    Member name or mathematical expression that generates a numeric value.
+			">
+				<Param name="expression" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+		<KeyWord name="ACCUM" func="yes">
+			<Overload retVal="" 
+			descr="
+Accumulates the values of mbrName within rangeList, up to the current member in the dimension of which rangeList is a part. 
+				
+				
+Parameters
+				
+mbrName
+    Any valid single member name (or a function that returns a single member) whose value is to be accumulated.
+rangeList
+    Optional comma-delimited list of members, member set functions, or range functions, across which the accumulation occurs. If rangeList is not specified, Essbase uses the level 0 members from the dimension tagged as Time.
+				
+Notes
+				
+    Financial functions never return a value; rather, they calculate a series of values internally based on the range specified.
+				
+    @ACCUM accepts the @ATTRIBUTE member set function as a member range.
+				
+    If you use an Essbase member set function to generate a member list for the rangeList parameter (for example, @SIBLINGS), to ensure correct results, consider the order in which Essbase sorts the generated member list. For more information, see the Technical Reference for Oracle Essbase topic for the member set function you are using.
+				
+    You cannot apply an operator (for example divide or multiply) to @Accum. For example, the formula Budget=@ACCUM(Actual, Jan:Feb)/2 is not valid.
+			">
+				<Param name="mbrName [" />
+				<Param name="rangeList]" />
+			</Overload>
+		</KeyWord>
+
+		<KeyWord name="ALLANCESTORS" func="yes">
+			<Overload retVal="" 
+			descr="
+Returns all ancestors of the specified member, including ancestors of any occurrences of the specified member as a shared member. This function excludes the specified member.
+				
+				
+Parameters
+				
+mbrName
+    Any valid single member name, or a function that returns a single member.
+				
+Notes
+    Essbase sorts the generated list of members in ascending order of the member number in the outline. Using Sample Basic as an example, if you specify 100-20 for mbrName, 100, Diet, and Product are returned (in that order). However, the order in which shared ancestors are returned is not guaranteed. This order is important to consider when you use the @ALLANCESTORS member set function with certain forecasting and statistical functions.
+				
+    You can use @ALLANCESTORS as a parameter of another function, where that parameter is a list of members.
+			">
+				<Param name="mbrName" />
+			</Overload>
+		</KeyWord>
+
+		<KeyWord name="ALIAS" func="yes">
+			<Overload retVal="" 
+			descr="
+Returns the alias name, as a string, for the specified member name.
+				
+Parameters
+				
+mbrName
+    Any valid member name, or a function returning a member.
+altName
+    Optional. Alias table name. This parameter is case insensitive.
+				
+Notes
+    If no alias name is found, this function returns an empty string.
+				
+    Because functions that take strings as arguments may not function correctly if the string matches a member alias, use the function @ALIAS to pass member alias names as strings, for example when passing alias names as strings to functions such as @ISUDA, @UDA, @CONCATENATE, @SUBSTRING, @MATCH, or @NAME.
+			">
+				<Param name="mbrName [" />
+				<Param name="altName]" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+		<KeyWord name="IF" func="yes">
+			<Overload retVal="" 
+			descr="
+Performs conditional tests within a formula. Using the IF statement, you can define a Boolean test, as well as formulas to be calculated if the test returns either a TRUE or FALSE value.
+
+Syntax
+
+IF( condition ) statement ; [ ...statement ; ] [ ELSEIF...statement | ELSE...statement]
+  ENDIF;			
+			">
+				<Param name="condition" />
+			</Overload>
+		</KeyWord>
+
+		<KeyWord name="ELSEIF" func="yes">
+			<Overload retVal="" 
+			descr="
+			">
+				<Param name="Condition" />
+			</Overload>
+		</KeyWord>		
+
+
+
+
+
+		<KeyWord name="HspNumToString" func="yes">
+			<Overload retVal="" 
+			descr="
+This function returns a string type value for the numeric value provided.
+				
+Note
+				
+The return value is of string type.
+				
+Example
+				
+This example converts 1000 to a string so that it can be printed in a log with an @return statement.
+				
+@return(@hspnumtostring(1000),error);
+				
+1000 will be printed in the log.
+			">
+				<Param name="NumericInput" />
+			</Overload>
+		</KeyWord>
+
+
+		<KeyWord name="CalcMgrDaysDiff" func="yes">
+			<Overload retVal="" 
+			descr="
+Purpose:
+Returns the days between two dates that are in the YYYYMMDD format
+				
+Syntax:
+Java Class: com.hyperion.calcmgr.common.cdf.CalendarFunctions.daysDiff(int,int)
+				
+CDF Spec: @CalcMgrDaysDiff(fromDate,toDate)
+				
+Note:
+				
+When using @CalcMgrDaysDiff, if the first date is later than then second date in the function, then a negative number is returned. If the first date is before the second date in the function, then a positive number is returned. if you want to return only positive numbers, then use @CalcMgrDaysBetween.
+			">
+				<Param name="fromDate" />
+				<Param name="toDate" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+		<KeyWord name="TRUNCATE" func="yes">
+			<Overload retVal="" 
+			descr="
+Removes the fractional part of expression, returning the integer.
+				
+Syntax
+				
+@TRUNCATE (expression)
+				
+Parameters
+				
+expression
+				
+    Single member specification, function, variable name, or other numeric expression, which returns a numeric value.
+			">
+				<Param name="expression" />
+
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+		<KeyWord name="CHILDREN" func="yes">
+			<Overload retVal="" 
+			descr="
+Returns all children of the specified member, excluding the specified member. This member set function can be used as a parameter of another function, where that parameter is a list of members.
+				
+Syntax
+				
+@CHILDREN (mbrName)
+				
+Parameters
+				
+mbrName
+				
+    Any valid single member name, or a function that returns a single member.
+				
+Notes
+				
+This function sorts the child members in ascending order. Using Sample Basic as an example, if you specify 100 for mbrName, Essbase returns 100-10, 100-20, 100-30 (in that order). This order is important to consider when you use this function with certain forecasting and statistical functions.
+			">
+				<Param name="mbrName" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+		<KeyWord name="COUNT" func="yes">
+			<Overload retVal="" 
+			descr="
+				
+				
+Returns the number of data values in the specified data set (XrangeList).
+				
+Syntax
+				
+@COUNT (SKIPNONE | SKIPMISSING | SKIPZERO | SKIPBOTH, XrangeList)
+				
+Parameters
+				
+SKIPNONE
+				
+    Includes all cells specified in the data set, regardless of their content, during calculation of the count.
+SKIPMISSING
+				
+    Excludes all #MISSING values from the data set during calculation of the count.
+SKIPZERO
+				
+    Excludes all zero (0) values from the data set during calculation of the count.
+SKIPBOTH
+				
+    Excludes all zero (0) values and #MISSING values from the data set during calculation of the count.
+XrangeList
+				
+    A list of numeric values. Referred to generically throughout this topic as 'the data set.'
+				
+    Can be a valid member name, a comma-delimited list of member names, cross dimensional members, or a return value from a member set function or range function (including @XRANGE).
+				
+    For more information about XrangeList, see Range List Parameters in the topic Range and Financial Functions.
+				
+				
+				
+			">
+				<Param name="SKIPNONE | SKIPMISSING | SKIPZERO | SKIPBOTH" />
+				<Param name="XrangeList" />		
+			</Overload>
+		</KeyWord>
+
+
+
+		<KeyWord name="CURRMBR" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+Returns the member that is currently being calculated in the specified dimension (dimName). This function can be used as a parameter of another function, where that parameter is a single member or a list of members.
+				
+Syntax
+				
+@CURRMBR (dimName)"ASDASD"
+				
+Parameters
+				
+dimName
+				
+    A single dimension name.
+				
+Notes
+				
+    You cannot use this function in a FIX statement.
+				
+    You cannot use this function on the left-hand side of a formula.
+				
+    The time required for retrieval and calculation may be significantly longer if this function is in a formula attached to a member tagged as Dynamic Calc or Dynamic Calc and Store.
+				
+Caution:
+				
+If you use this function to return a member name which is then concatenated with other names to get a final member name, it may result in an invalid member name, depending on the current intersection being calculated. For example: @MEMBER(@CONCATENATE(@NAME (@CURRMBR ("Account")),"_Total"))
+				
+				
+			'>
+				<Param name="dimName" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+		<KeyWord name="DESCENDANTS" func="yes">
+			<Overload retVal="" 
+			descr='
+Returns all descendants of the specified member, or those down to the specified generation or level. This function excludes the specified member.
+
+Syntax
+
+@DESCENDANTS (mbrName [, genLevNum| genLevName])
+
+Parameters
+
+mbrName
+
+    Any valid single member name, or a function that returns a single member.
+genLevNum
+
+    Optional. An integer value that defines the absolute generation or level number down to which to select the members. A positive integer defines a generation number. A value of 0 or a negative integer defines a level number.
+genLevName
+
+    Optional. Level name or generation name down to which to select the members.
+
+Notes
+
+    You can use this function as a parameter of another function, where that parameter is a list of members.
+
+    Essbase sorts the generated list of members starting with the nearest descendant of the member, followed by the next nearest descendant of the member, and so on. In the Sample.Basic database, if you specify @DESCENDANTS(100), Essbase returns 100-10, 100-20, 100-30 (in that order). This order is important to consider when you use this function with certain forecasting and statistical functions.
+
+    To include the specified member, use @IDESCENDANTS.
+
+    To include descendants of shared members, use @RDESCENDANTS and @IRDESCENDANTS.		
+			'>
+				<Param name="mbrName [" />
+				<Param name="genLevNum| genLevName]" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+		<KeyWord name="ISCHILD" func="yes">
+			<Overload retVal="" 
+			descr='
+Returns TRUE if the current member is a child of the specified member. This function excludes the specified member.
+
+Syntax
+
+@ISCHILD (mbrName)
+
+Parameters
+
+mbrName
+
+    Any valid single member name, or a function that returns a single member.			
+			'>
+				<Param name="mbrName" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+		<KeyWord name="ISMBRWITHATTR" func="yes">
+			<Overload retVal="" 
+			descr='
+Returns TRUE if the current member belongs to the list of base members that are associated with an attribute that satisfies the conditions you specify.
+
+Syntax
+
+@ISMBRWITHATTR (dimName, "operator", value)
+
+Parameters
+
+dimName
+
+    Single varying attribute dimension name.
+operator
+
+    Operator specification, which must be enclosed in quotation marks ("").
+value
+
+    A value that, in combination with the operator, defines the condition that must be met. The value can be a varying attribute member specification, a constant, or a date-format function (that is, @TODATE).	
+			'>
+				<Param name="dimName" />
+				<Param name='"operator"' />
+				<Param name="value" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="LIST" func="yes">
+			<Overload retVal="" 
+			descr='
+Creates and distinguishes lists that are processed by functions that require list arguments. Can be used to create expLists, member lists, or rangeLists. This function treats a collection of parameters as one entity.
+
+Syntax
+
+@LIST (argument1, argument2, ..., argumentN)
+
+Parameters
+
+argument1, argument2, ..., argumentN
+
+    The list of arguments that are collected and treated as one argument so they can be processed by the parent function. Arguments can be member names, member combinations, member set functions, range functions, and numeric expressions.
+
+Notes
+
+@LIST does not check for or eliminate duplicates.
+			'>
+				<Param name="argument1" />
+				<Param name="argument2" />
+				<Param name="..." />
+				<Param name="argumentN" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="ROUND" func="yes">
+			<Overload retVal="" 
+			descr='
+Rounds expression to numDigits.
+
+Syntax
+
+@ROUND (expression, numDigits [, compatibility])
+
+Parameters
+
+expression
+
+    Single member specification, variable name, or other numeric expression.
+numDigits
+
+    Single member specification, variable name, or other numeric expression that provides an integer value. If numDigits is 0 or a positive number, expression is rounded to the number of decimal places specified by numDigits. If numDigits is a negative value, expression is rounded to the nearest 10 to the power of the absolute value of numDigits. For example:
+
+    @ROUND(1234, -2) = 1200
+
+    The default value for numDigits is 0.
+compatibility
+
+    Optional backward-compatibility setting to select which algorithm you want to use for rounding margin of error.
+
+    Possible keyword values:
+
+        COMPATPREV11121—Original rounding algorithm, in use up until Release 11.1.2.1. The integer part of the number is used to generate the rounding margin of error. Limitation: aggregate values are only accurate up to the 15th decimal place.
+
+        Only some decimal numbers can be represented perfectly in binary. For example, if the value 1234.725 is loaded, it may be represented in binary as 1234.72499999999991. Using the COMPATPREV11121 algorithm to round this number to two decimal places returns 1234.72, though you may prefer 1234.73.
+
+        COMPATPREV11123—Alternate rounding algorithm, in use between Release 11.1.2.1 and 11.1.2.3, to negate the representational error discussed above. The rounding margin of error was changed for better precision, which in some cases returned different results than the original algorithm.
+
+    If unspecified, the default rounding algorithm now matches the standard used by the C-language Round function. The C Round function is a common rounding algorithm, used widely across platforms. It uses a built-in construct of floor and ceiling functions to map a real number to the largest previous or the smallest subsequent integer, respectively, depending on numDigits.
+	'>
+				<Param name="expression" />
+				<Param name="numDigits [" />
+				<Param name="compatibility]" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XRANGE" func="yes">
+			<Overload retVal="" 
+			descr='
+Returns the range of members between (and inclusive of) two specified single or cross-dimensional members at the same level.
+
+For example, when you work with the Time and Scenario dimensions, you can use @XRANGE to return a member set combination of Time and Scenario instead of creating a dimension that combines the two (which creates many more individual members than necessary).
+
+@XRANGE is a member set function. Member set functions return a list of members. @XRANGE can appear anywhere in a formula where a range can normally appear.
+
+Syntax
+
+@XRANGE (mbrName1, mbrName2)
+
+Parameters
+
+mbrName1
+
+    Any valid member name, member combination, or function that returns a single member.
+mbrName2
+
+    Any valid member name, member combination, or function that returns a single member. If mbrName1 is a cross-dimensional member (such as Actual->Jan), then mbrName2 must be also, and the dimension order must match the order used in mbrName1.
+
+Notes
+
+    The two arguments to @XRANGE can be either both single members or both cross-dimensional members. For example, @XRANGE(Actual->Jan, Budget) is invalid because a single member and a cross dimensional member are used together. Both @XRANGE(Actual->Jan, Budget->Feb) and @XRANGE(Jan, Mar) are valid.
+
+    The dimension order of members must match for both arguments. For example, @XRANGE(Actual->Jun, Jul->Budget) is invalid because the two member components are in different orders. @XRANGE(Actual->Jun, Budget->Jul) is valid.
+
+    Although the syntax is correct, a function such as @XRANGE (Dec, Mar) is meaningless because it results in an empty set.
+
+    The member components of each argument must be from the same level. For example, @XRANGE(Actual->Jun, Budget->Qtr1) is invalid because Jun and Qtr1 are not from the same level.		
+			'>
+				<Param name="mbrName1" />
+				<Param name="mbrName2" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="WITHATTR" func="yes">
+			<Overload retVal="" 
+			descr='
+	Returns all base members that are associated with an attribute or varying attribute that satisfies the conditions you specify. You can use operators such as =, and IN to specify conditions that must be met. This function can be used as a parameter of another function, where that parameter is a list of members.			
+
+
+Syntax
+
+@WITHATTR (dimName, "operator", value)
+
+Parameters
+
+dimName
+
+    Single attribute dimension name or varying attribute dimension name.
+operator
+
+    Operator specification, which must be enclosed in quotation marks ("").
+value
+
+    A value that, in combination with the operator, defines the condition that must be met. The value can be an attribute member specification, a constant, or a date-format function (@TODATE).
+
+				
+			'>
+				<Param name="dimName" />
+				<Param name='"operator"' />
+				<Param name="value" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="CURLEV" func="yes">
+			<Overload retVal="" 
+			descr='
+Returns the level number of the current member combination for the specified dimension. This number represents the number of members that separates the current member from its bottom-most descendant.
+
+Syntax
+
+@CURLEV (dimName)
+
+Parameters
+
+dimName
+
+    Single dimension name specification. dimName must be the name of the top-most member of the dimension. It cannot be another member name from within the dimension.	
+			'>
+				<Param name="dimName" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="EQUAL" func="yes">
+			<Overload retVal="" 
+			descr='
+Returns a member set of member names that match the specified token name.
+
+This function can be used on unique and duplicate-name outlines.
+
+Syntax
+
+@EQUAL (tokenName, topMbrinHierarchy)
+
+Parameters
+
+tokenName
+
+    Token string value, representing the name of a member, with which to compare to members in the outline, starting with member specified in topMbrinHierarchy. The specified token name must not be qualified for duplicate members.
+topMbrinHierarchy
+
+    A fully qualified name of a member in the outline on which to base the member search. The specified member and its aliases, and all of its descendants, are included in the search.
+
+    To search the entire outline, provide an empty string ("") for this parameter. For example, @EQUAL("100-10", "").
+			'>
+				<Param name="tokenName" />
+				<Param name="topMbrinHierarchy" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="GENMBRS" func="yes">
+			<Overload retVal="" 
+			descr='
+Returns all members with the specified generation number or generation name in the specified dimension.
+
+Syntax
+
+@GENMBRS (dimName,genName|genNum)
+
+Parameters
+
+dimName
+
+    A single dimension name specification.
+genName|genNum
+
+    Generation name or generation number from dimName. A positive integer defines a generation number.
+
+Notes
+
+    If you specify a name for the genName parameter, Essbase looks for a generation with that name in the specified dimension.
+
+    If you specify a number for the genName parameter (for example, 2), Essbase first looks for a generation with a number string name. If no generation name exists with that numeric name, Essbase checks to see if the parameter is a valid generation number. Check the application event log after running the calculation to make sure that the correct members were calculated.
+
+    Generation 0 is not a valid generation number. Generations begin numbering at 1.
+
+    If you specify a temporary variable for the genName parameter, Essbase does not recognize the value of the variable. It looks in the outline for a generation name with the same name as the temporary variable.
+
+    For more information about generations and defining generation names, see Designing and Maintaining Essbase Cubes.
+
+    Essbase sorts the generated list of members in ascending order. Using Sample Basic as an example, if you specify @GENMBRS(Product,2), Essbase returns 100, 200, 300, 400, Diet (in that order). This order is important to consider when you use the @GENMBRS member set function with certain forecasting and statistical functions.
+			'>
+				<Param name="dimName" />
+				<Param name="genName|genNum" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="FORMATDATE" func="yes">
+			<Overload retVal="" 
+			descr='
+Returns a formatted date-string.
+
+Syntax
+
+@FormatDate(date, date_format_string)
+
+Parameters
+
+date
+
+    A number representing the input date between January 1, 1970 and Dec 31, 2037. The number is the number of seconds elapsed since midnight, January 1, 1970. To retrieve this number, use any of the following functions: @TODAY, @TODATEEX, or @DATEROLL.
+
+    Date-time attribute properties of a member can also be used to retrieve this number. For example, @AttributeVal("Intro Date"); returns the product introduction date for the current product in context.
+date_format_string
+
+    One of the following literal strings (excluding ordered-list numbers and parenthetical examples) indicating a supported date format.
+
+        "mon dd yyyy" (Example: mon = Aug)
+
+        "Month dd yyyy" (Example: Month = August)
+
+        "mm/dd/yy"
+
+        "mm/dd/yyyy"
+
+        "yy.mm.dd"
+
+        "dd/mm/yy"
+
+        "dd.mm.yy"
+
+        "dd-mm-yy"
+
+        "dd Month yy"
+
+        "dd mon yy"
+
+        "Month dd, yy"
+
+        "mon dd, yy"
+
+        "mm-dd-yy"
+
+        "yy/mm/dd"
+
+        "yymmdd"
+
+        "dd Month yyyy"
+
+        "dd mon yyyy"
+
+        "yyyy-mm-dd"
+
+        "yyyy/mm/dd"
+
+        Long format (Example: WeekDay, Mon dd, yyyy)
+
+        Short format (Example: m/d/yy)
+			'>
+				<Param name="date" />
+				<Param name="date_format_string" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="GEN" func="yes">
+			<Overload retVal="" 
+			descr='
+Returns the generation number of the specified member.
+
+Syntax
+
+@GEN (mbrName)
+
+Parameters
+
+mbrName
+
+    Any valid single member name, or a function that returns a single member.	
+			'>
+				<Param name="mbrName" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="ISDESC" func="yes">
+			<Overload retVal="" 
+			descr='
+Returns TRUE if the current member is a descendant of the specified member. This function excludes the specified member.
+
+Syntax
+
+@ISDESC (mbrName)
+
+Parameters
+
+mbrName
+
+    Any valid single member name, or a function that returns a single member.
+			'>
+				<Param name="mbrName" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="ISIBLINGS" func="yes">
+			<Overload retVal="" 
+			descr='
+Returns the specified member and all siblings of that member. This function can be used as a parameter of another function, where that parameter is a list of members.
+
+Syntax
+
+@ISIBLINGS (mbrName)
+
+Parameters
+
+mbrName
+
+    Any valid single member name, or a function that returns a single member.
+
+Notes
+
+Essbase sorts the generated list of members in ascending order. Using Sample Basic as an example, if you specify 200-30 for mbrName, Essbase returns 200-10, 200-20, 200-30, 200-40 (in that order). This order is important to consider when you use this function with certain forecasting and statistical functions.
+			'>
+				<Param name="mbrName" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="ISIPARENT" func="yes">
+			<Overload retVal="" 
+			descr='
+Returns TRUE if the current member is the specified member or the parent of the specified member.
+
+Syntax
+
+@ISIPARENT (mbrName)
+
+Parameters
+
+mbrName
+
+    Any valid single member name, or a function that returns a single member.
+			'>
+				<Param name="mbrName" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="MDSHIFT" func="yes">
+			<Overload retVal="" 
+			descr='
+Shifts a series of data values across multiple dimension ranges.
+
+Syntax
+
+@MDSHIFT (mbrName, shiftCnt1, dimName1, [range1|(range1)], . . . shiftCntX, dimNameX, [rangeX|(rangeX)])
+
+Parameters
+
+mbrName
+
+    Any valid single member name, or a function that returns a single member.
+shiftCnt1...shiftCntX
+
+    Integer that defines the number of member positions to shift.
+dimName1, . . . dimNameX
+
+    Defines the dimension names in which the shift is to occur.
+range1|(range1) . . . rangeX|(rangeX)
+
+    Optional. A valid member name, a comma-delimited list of member names, member set functions, and range functions. If rangeList is not specified, Essbase uses the level 0 members from the dimension specified with the dimName parameter. If the range list is comma delimited, then the list must be enclosed in parentheses.
+			'>
+				<Param name="mbrName" />
+				<Param name="shiftCnt1" />
+				<Param name="dimName1" />
+				<Param name="[range1|(range1)]" />
+				<Param name=". . . shiftCntX" />
+				<Param name="dimNameX" />
+				<Param name="[rangeX|(rangeX)]" />
+				
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="MEMBERAT" func="yes">
+			<Overload retVal="" 
+			descr='
+Returns the specified member in a list of members.
+
+Syntax
+
+@MEMBERAT(mbrList, mbrIndex)
+
+Parameters
+
+mbrList
+
+    Member list or function that returns a member list.
+mbrIndex
+
+    Nonzero integer. If positive, enumerates from start of the list (for example, 1 returns the first member in the list). If negative, enumerates from the end of the list (for example, -1 returns the last member in the list).
+
+Notes
+
+If mbrIndex is 0 or out of bounds, the script or member formula fails during verification or runtime and returns an error.
+			'>
+				<Param name="mbrList" />
+				<Param name="mbrIndex" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+		<KeyWord name="XXXXXXXX" func="yes">
+			<Overload retVal="" 
+			descr='
+				
+				
+			'>
+				<Param name="xxxxxx" />
+				<Param name="xxxxx" />
+			</Overload>
+		</KeyWord>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</AutoComplete>
+</NotepadPlus>
