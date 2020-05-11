@@ -25,9 +25,9 @@ _Necesitarás estas configuraciones previas para aplicar el lenguaje correctamen
 Ir al menú "*Configuración*">"*Configurador de estilo*">**"Seleccionar tema"**.
 Por ejemplo, utilizar el tema: **Monokai**
 
-* Tener deshabilitada la opción "*Configuración*">"*Configurador de estilo*">**"Habilitar color global de fuentes"**❌
+* Tener deshabilitada la opción "*Configuración*">"*Configurador de estilo*"> **"Habilitar color global de fuentes"** ❌
 
-* Tener habilitada la opción "*Configuración*">"*Configurador de estilo"*>**"Habilitar color global de fondo"**✔️
+* Tener habilitada la opción "*Configuración*">"*Configurador de estilo"*> **"Habilitar color global de fondo"** ✔️
 
 * *Recomendación personal:* Utilizar el tipo de letra **Consolas** para codear. ⌨
 
