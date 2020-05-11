@@ -12,7 +12,7 @@ _También podrá obtener autocompletado de funciones y visualizar los parámetro
  
 _Además, el lenguaje lo ayudará a marcar errores de sintaxis en color rojo en la mayoria de los casos para facilitar su desarrollo en tiempo de codificación._
 
-## Comenzando 🚀
+## Comenzando - Seguí las instrucciones 🚀
 
 _Estas instrucciones te ayudarán a configurar el lenguaje._
 
