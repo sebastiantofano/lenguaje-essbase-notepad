@@ -2,7 +2,7 @@
 
 ## Desarrollado en 2020
 
-
+![Imagenes del desarrollo](https://github.com/sebastiantofano/lenguaje-essbase-notepad/blob/master/img/imagen_1.png?raw=true)
 
 **Tener configurado Notepad++ con un tema oscuro**
 
