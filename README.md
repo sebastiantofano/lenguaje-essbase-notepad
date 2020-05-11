@@ -2,7 +2,7 @@
 
 ## Desarrollado en 2020
 
-![Imagenes del desarrollo](https://github.com/sebastiantofano/essbase-lenguaje/blob/master/img/imagen_1.png?raw=true)
+![Imagenes del desarrollo](https://github.com/sebastiantofano/lenguaje-essbase-notepad/blob/master/img/imagen_1.png?raw=true)
 
 **Tener configurado Notepad++ con un tema oscuro**
 
@@ -81,4 +81,4 @@ Esta es una primera versión, sólo se desarrollo autocompletado de las funcione
 
 * **Sebastián Tofano** - [Enviarme un mensaje por e-mail](mailto:sebastian.tofano@oracle.com)
 
-![Imagenes del desarrollo](https://github.com/sebastiantofano/essbase-lenguaje/blob/master/img/imagen_2.png?raw=true)
+![Imagenes del desarrollo](https://github.com/sebastiantofano/lenguaje-essbase-notepad/blob/master/img/imagen_2.png?raw=true)
