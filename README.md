@@ -81,4 +81,6 @@ Esta es una primera versión, sólo se desarrollo autocompletado de las funcione
 
 * **Sebastián Tofano** - [Enviarme un mensaje por e-mail](mailto:sebastian.tofano@oracle.com)
 
+## Otrás imágenes del proyecto
+
 ![Imagenes del desarrollo](https://github.com/sebastiantofano/lenguaje-essbase-notepad/blob/master/img/imagen_2.png?raw=true)
